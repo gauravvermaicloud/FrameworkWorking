@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!-- Appenders -->
+<appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+
+   <param name="file" value="${catalina.home}/logs/log.txt"/>
+   <param name="immediateFlush" value="false"/>
+   <param name="threshold" value="info"/>
+   <param name="append" value="true"/>
+   <param name="BufferSize" value="8" /> <!-- In KB, Default is 8KB -->
+   <param name="datePattern" value="'.'yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+             <param name="ConversionPattern" value="[%p] %d %c %M - %m%n"/>
+        </layout>
+</appender>
+
+
+<appender name="asyncAppender" class="org.apache.log4j.AsyncAppender"> 
+	 <param name="BufferSize" value="128" />
+	 <param name="Blocking" value="true" />
+	 <appender-ref ref="file" /> 
+</appender>
+    
+    <!-- Application Loggers -->
+    <logger name="com.boilerplate.java">
+        <level value="info" />
+    </logger>
+    
+    <!-- 3rdparty Loggers -->
+    <logger name="org.springframework.core">
+        <level value="info" />
+    </logger>
+    
+    <logger name="org.springframework.beans">
+        <level value="info" />
+    </logger>
+    
+    <logger name="org.springframework.context">
+        <level value="info" />
+    </logger>
+
+    <logger name="org.springframework.web">
+        <level value="info" />
+    </logger>
+
+    <logger name="log4j.logger.net.sf.hibernate.SQL">
+        <level value="info" />
+    </logger>
+    
+    <!-- Root Logger -->
+    <root>
+        <priority value="info" />
+        <appender-ref ref="file" />
+    </root>
+    
+</log4j:configuration>

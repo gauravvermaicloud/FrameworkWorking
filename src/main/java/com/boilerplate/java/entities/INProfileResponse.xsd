@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+         <!-- XML Schema Generated from XML Document on Fri Feb 19 2016 15:03:28 GMT+0530 (IST) -->
+         <!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+         <xs:element name="INProfileResponse">
+               <xs:complexType>
+                     <xs:sequence>
+                           <xs:element name="Header">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="MessageText"></xs:element>
+                                             <xs:element name="ReportDate" type="xs:string"></xs:element>
+                                             <xs:element name="ReportTime" type="xs:string"></xs:element>
+                                             <xs:element name="SystemCode" type="xs:string"></xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="UserMessage">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="UserMessageText" type="xs:string"></xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="CreditProfileHeader">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="Enquiry_Username" type="xs:string"></xs:element>
+                                             <xs:element name="ReportDate" type="xs:string"></xs:element>
+                                             <xs:element name="ReportNumber" type="xs:string"></xs:element>
+                                             <xs:element name="ReportTime" type="xs:string"></xs:element>
+                                             <xs:element name="Subscriber"></xs:element>
+                                             <xs:element name="Subscriber_Name" type="xs:string"></xs:element>
+                                             <xs:element name="Version" type="xs:string"></xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="Current_Application">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="Current_Application_Details">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="Enquiry_Reason" type="xs:string"></xs:element>
+                                                               <xs:element name="Finance_Purpose"></xs:element>
+                                                               <xs:element name="Amount_Financed" type="xs:string"></xs:element>
+                                                               <xs:element name="Duration_Of_Agreement" type="xs:string"></xs:element>
+                                                               <xs:element name="Current_Applicant_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Last_Name" type="xs:string"></xs:element>
+                                                                                 <xs:element name="First_Name" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Middle_Name1"></xs:element>
+                                                                                 <xs:element name="Middle_Name2"></xs:element>
+                                                                                 <xs:element name="Middle_Name3"></xs:element>
+                                                                                 <xs:element name="Gender_Code" type="xs:string"></xs:element>
+                                                                                 <xs:element name="IncomeTaxPan" type="xs:string"></xs:element>
+                                                                                 <xs:element name="PAN_Issue_Date"></xs:element>
+                                                                                 <xs:element name="PAN_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Passport_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Passport_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Voter_s_Identity_Card"></xs:element>
+                                                                                 <xs:element name="Voter_ID_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Voter_ID_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Driver_License_Number"></xs:element>
+                                                                                 <xs:element name="Driver_License_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Driver_License_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Ration_Card_Number"></xs:element>
+                                                                                 <xs:element name="Ration_Card_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Ration_Card_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Universal_ID_Number"></xs:element>
+                                                                                 <xs:element name="Universal_ID_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Universal_ID_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Date_Of_Birth_Applicant" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Telephone_Number_Applicant_1st"></xs:element>
+                                                                                 <xs:element name="Telephone_Extension"></xs:element>
+                                                                                 <xs:element name="Telephone_Type"></xs:element>
+                                                                                 <xs:element name="MobilePhoneNumber" type="xs:string"></xs:element>
+                                                                                 <xs:element name="EMailId" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="Current_Other_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Income"></xs:element>
+                                                                                 <xs:element name="Marital_Status"></xs:element>
+                                                                                 <xs:element name="Employment_Status"></xs:element>
+                                                                                 <xs:element name="Time_with_Employer"></xs:element>
+                                                                                 <xs:element name="Number_of_Major_Credit_Card_Held"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="Current_Applicant_Address_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="FlatNoPlotNoHouseNo" type="xs:string"></xs:element>
+                                                                                 <xs:element name="BldgNoSocietyName"></xs:element>
+                                                                                 <xs:element name="RoadNoNameAreaLocality"></xs:element>
+                                                                                 <xs:element name="City" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Landmark"></xs:element>
+                                                                                 <xs:element name="State" type="xs:string"></xs:element>
+                                                                                 <xs:element name="PINCode" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Country_Code" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="CAIS_Account">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="CAIS_Summary">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="Credit_Account">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="CADSuitFiledCurrentBalance" type="xs:string"></xs:element>
+                                                                                 <xs:element name="CreditAccountActive" type="xs:string"></xs:element>
+                                                                                 <xs:element name="CreditAccountClosed" type="xs:string"></xs:element>
+                                                                                 <xs:element name="CreditAccountDefault" type="xs:string"></xs:element>
+                                                                                 <xs:element name="CreditAccountTotal" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="Total_Outstanding_Balance">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Outstanding_Balance_All" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Outstanding_Balance_Secured" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Outstanding_Balance_Secured_Percentage" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Outstanding_Balance_UnSecured" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Outstanding_Balance_UnSecured_Percentage" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="CAIS_Account_DETAILS" maxOccurs="unbounded">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="Identification_Number"></xs:element>
+                                                               <xs:element name="Subscriber_Name" type="xs:string"></xs:element>
+                                                               <xs:element name="Account_Number" type="xs:string"></xs:element>
+                                                               <xs:element name="Portfolio_Type" type="xs:string"></xs:element>
+                                                               <xs:element name="Account_Type" type="xs:string"></xs:element>
+                                                               <xs:element name="Open_Date" type="xs:string"></xs:element>
+                                                               <xs:element name="Highest_Credit_or_Original_Loan_Amount" type="xs:string"></xs:element>
+                                                               <xs:element name="Terms_Duration"></xs:element>
+                                                               <xs:element name="Terms_Frequency"></xs:element>
+                                                               <xs:element name="Scheduled_Monthly_Payment_Amount"></xs:element>
+                                                               <xs:element name="Account_Status" type="xs:string"></xs:element>
+                                                               <xs:element name="Payment_Rating" type="xs:string"></xs:element>
+                                                               <xs:element name="Payment_History_Profile" type="xs:string"></xs:element>
+                                                               <xs:element name="Special_Comment"></xs:element>
+                                                               <xs:element name="Current_Balance" type="xs:string"></xs:element>
+                                                               <xs:element name="Amount_Past_Due" type="xs:string"></xs:element>
+                                                               <xs:element name="Date_Reported" type="xs:string"></xs:element>
+                                                               <xs:element name="Date_Closed"></xs:element>
+                                                               <xs:element name="Date_of_Last_Payment"></xs:element>
+                                                               <xs:element name="SuitFiledWillfulDefaultWrittenOffStatus"></xs:element>
+                                                               <xs:element name="Written_off_Settled_Status"></xs:element>
+                                                               <xs:element name="Value_of_Credits_Last_Month"></xs:element>
+                                                               <xs:element name="Occupation_Code"></xs:element>
+                                                               <xs:element name="Settlement_Amount"></xs:element>
+                                                               <xs:element name="Value_of_Collateral"></xs:element>
+                                                               <xs:element name="Type_of_Collateral"></xs:element>
+                                                               <xs:element name="Written_Off_Amt_Total"></xs:element>
+                                                               <xs:element name="Written_Off_Amt_Principal"></xs:element>
+                                                               <xs:element name="Rate_of_Interest"></xs:element>
+                                                               <xs:element name="Repayment_Tenure" type="xs:string"></xs:element>
+                                                               <xs:element name="Promotional_Rate_Flag"></xs:element>
+                                                               <xs:element name="Income"></xs:element>
+                                                               <xs:element name="Income_Indicator"></xs:element>
+                                                               <xs:element name="Income_Frequency_Indicator"></xs:element>
+                                                               <xs:element name="DefaultStatusDate"></xs:element>
+                                                               <xs:element name="LitigationStatusDate"></xs:element>
+                                                               <xs:element name="WriteOffStatusDate"></xs:element>
+                                                               <xs:element name="DateOfAddition" type="xs:string"></xs:element>
+                                                               <xs:element name="CurrencyCode" type="xs:string"></xs:element>
+                                                               <xs:element name="Subscriber_comments"></xs:element>
+                                                               <xs:element name="Consumer_comments"></xs:element>
+                                                               <xs:element name="AccountHoldertypeCode" type="xs:string"></xs:element>
+                                                               <xs:element name="CAIS_Account_History" maxOccurs="unbounded">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Asset_Classification" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Days_Past_Due" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Month" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Year" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CAIS_Holder_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Alias"></xs:element>
+                                                                                 <xs:element name="Date_of_birth" type="xs:string"></xs:element>
+                                                                                 <xs:element name="First_Name_Non_Normalized" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Gender_Code" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Middle_Name_1_Non_Normalized"></xs:element>
+                                                                                 <xs:element name="Middle_Name_2_Non_Normalized"></xs:element>
+                                                                                 <xs:element name="Middle_Name_3_Non_Normalized"></xs:element>
+                                                                                 <xs:element name="Surname_Non_Normalized" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CAIS_Holder_Address_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Address_indicator_non_normalized"></xs:element>
+                                                                                 <xs:element name="City_non_normalized" type="xs:string"></xs:element>
+                                                                                 <xs:element name="CountryCode_non_normalized" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Fifth_Line_Of_Address_non_normalized"></xs:element>
+                                                                                 <xs:element name="First_Line_Of_Address_non_normalized" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Residence_code_non_normalized"></xs:element>
+                                                                                 <xs:element name="Second_Line_Of_Address_non_normalized" type="xs:string"></xs:element>
+                                                                                 <xs:element name="State_non_normalized" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Third_Line_Of_Address_non_normalized"></xs:element>
+                                                                                 <xs:element name="ZIP_Postal_Code_non_normalized" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CAIS_Holder_Phone_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Telephone_Number" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Telephone_Type"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CAIS_Holder_ID_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Driver_License_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Driver_License_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Driver_License_Number"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="Match_result">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="Exact_match" type="xs:string"></xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="TotalCAPS_Summary">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="TotalCAPSLast7Days" type="xs:string"></xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="CAPS">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="CAPS_Application_Details" maxOccurs="unbounded">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="Amount_Financed" type="xs:string"></xs:element>
+                                                               <xs:element name="CAPS_Applicant_Additional_Address_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="FlatNoPlotNoHouseNo" type="xs:string"></xs:element>
+                                                                                 <xs:element name="BldgNoSocietyName"></xs:element>
+                                                                                 <xs:element name="RoadNoNameAreaLocality"></xs:element>
+                                                                                 <xs:element name="City" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Landmark"></xs:element>
+                                                                                 <xs:element name="State" type="xs:string"></xs:element>
+                                                                                 <xs:element name="PINCode" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Country_Code" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CAPS_Applicant_Address_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="BldgNoSocietyName"></xs:element>
+                                                                                 <xs:element name="City" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Country_Code" type="xs:string"></xs:element>
+                                                                                 <xs:element name="FlatNoPlotNoHouseNo" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Landmark"></xs:element>
+                                                                                 <xs:element name="PINCode" type="xs:string"></xs:element>
+                                                                                 <xs:element name="RoadNoNameAreaLocality"></xs:element>
+                                                                                 <xs:element name="State" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CAPS_Applicant_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Date_Of_Birth_Applicant" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Driver_License_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Driver_License_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Driver_License_Number"></xs:element>
+                                                                                 <xs:element name="First_Name" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Gender_Code" type="xs:string"></xs:element>
+                                                                                 <xs:element name="IncomeTaxPan" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Last_Name" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Middle_Name1"></xs:element>
+                                                                                 <xs:element name="Middle_Name2"></xs:element>
+                                                                                 <xs:element name="Middle_Name3"></xs:element>
+                                                                                 <xs:element name="MobilePhoneNumber" type="xs:string"></xs:element>
+                                                                                 <xs:element name="PAN_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="PAN_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Passport_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Passport_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Passport_number"></xs:element>
+                                                                                 <xs:element name="Ration_Card_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Ration_Card_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Ration_Card_Number"></xs:element>
+                                                                                 <xs:element name="Telephone_Type" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Universal_ID_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Universal_ID_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Universal_ID_Number"></xs:element>
+                                                                                 <xs:element name="Voter_ID_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Voter_ID_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Voter_s_Identity_Card"></xs:element>
+                                                                                 <xs:element name="EMailId" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CAPS_Other_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Employment_Status"></xs:element>
+                                                                                 <xs:element name="Income"></xs:element>
+                                                                                 <xs:element name="Marital_Status"></xs:element>
+                                                                                 <xs:element name="Number_of_Major_Credit_Card_Held"></xs:element>
+                                                                                 <xs:element name="Time_with_Employer"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="Date_of_Request" type="xs:string"></xs:element>
+                                                               <xs:element name="Duration_Of_Agreement" type="xs:string"></xs:element>
+                                                               <xs:element name="Enquiry_Reason" type="xs:string"></xs:element>
+                                                               <xs:element name="Finance_Purpose" type="xs:string"></xs:element>
+                                                               <xs:element name="ReportNumber" type="xs:string"></xs:element>
+                                                               <xs:element name="ReportTime" type="xs:string"></xs:element>
+                                                               <xs:element name="Subscriber_code"></xs:element>
+                                                               <xs:element name="Subscriber_Name" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="CAPS_Summary">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="Credit_CAPSLast180Days" type="xs:string"></xs:element>
+                                                               <xs:element name="Credit_CAPSLast30Days" type="xs:string"></xs:element>
+                                                               <xs:element name="Credit_CAPSLast7Days" type="xs:string"></xs:element>
+                                                               <xs:element name="Credit_CAPSLast90Days" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="NonCreditCAPS">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="CAPS_Application_Details" maxOccurs="unbounded">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="Amount_Financed" type="xs:string"></xs:element>
+                                                               <xs:element name="CAPS_Applicant_Additional_Address_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="FlatNoPlotNoHouseNo" type="xs:string"></xs:element>
+                                                                                 <xs:element name="BldgNoSocietyName"></xs:element>
+                                                                                 <xs:element name="RoadNoNameAreaLocality"></xs:element>
+                                                                                 <xs:element name="City" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Landmark"></xs:element>
+                                                                                 <xs:element name="State" type="xs:string"></xs:element>
+                                                                                 <xs:element name="PINCode" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Country_Code" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CAPS_Applicant_Address_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="BldgNoSocietyName"></xs:element>
+                                                                                 <xs:element name="City" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Country_Code" type="xs:string"></xs:element>
+                                                                                 <xs:element name="FlatNoPlotNoHouseNo" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Landmark"></xs:element>
+                                                                                 <xs:element name="PINCode" type="xs:string"></xs:element>
+                                                                                 <xs:element name="RoadNoNameAreaLocality"></xs:element>
+                                                                                 <xs:element name="State" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CAPS_Applicant_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Date_Of_Birth_Applicant" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Driver_License_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Driver_License_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Driver_License_Number"></xs:element>
+                                                                                 <xs:element name="First_Name" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Gender_Code" type="xs:string"></xs:element>
+                                                                                 <xs:element name="IncomeTaxPan" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Last_Name" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Middle_Name1"></xs:element>
+                                                                                 <xs:element name="Middle_Name2"></xs:element>
+                                                                                 <xs:element name="Middle_Name3"></xs:element>
+                                                                                 <xs:element name="MobilePhoneNumber" type="xs:string"></xs:element>
+                                                                                 <xs:element name="PAN_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="PAN_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Passport_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Passport_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Passport_number"></xs:element>
+                                                                                 <xs:element name="Ration_Card_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Ration_Card_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Ration_Card_Number"></xs:element>
+                                                                                 <xs:element name="Telephone_Type" type="xs:string"></xs:element>
+                                                                                 <xs:element name="Universal_ID_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Universal_ID_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Universal_ID_Number"></xs:element>
+                                                                                 <xs:element name="Voter_ID_Expiration_Date"></xs:element>
+                                                                                 <xs:element name="Voter_ID_Issue_Date"></xs:element>
+                                                                                 <xs:element name="Voter_s_Identity_Card"></xs:element>
+                                                                                 <xs:element name="EMailId" type="xs:string"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="CAPS_Other_Details">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Employment_Status"></xs:element>
+                                                                                 <xs:element name="Income"></xs:element>
+                                                                                 <xs:element name="Marital_Status"></xs:element>
+                                                                                 <xs:element name="Number_of_Major_Credit_Card_Held"></xs:element>
+                                                                                 <xs:element name="Time_with_Employer"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="Date_of_Request" type="xs:string"></xs:element>
+                                                               <xs:element name="Duration_Of_Agreement" type="xs:string"></xs:element>
+                                                               <xs:element name="Enquiry_Reason" type="xs:string"></xs:element>
+                                                               <xs:element name="Finance_Purpose" type="xs:string"></xs:element>
+                                                               <xs:element name="ReportNumber" type="xs:string"></xs:element>
+                                                               <xs:element name="ReportTime" type="xs:string"></xs:element>
+                                                               <xs:element name="Subscriber_code"></xs:element>
+                                                               <xs:element name="Subscriber_Name" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="NonCreditCAPS_Summary">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="Non_Credit_CAPSLast180Days" type="xs:string"></xs:element>
+                                                               <xs:element name="Non_Credit_CAPSLast30Days" type="xs:string"></xs:element>
+                                                               <xs:element name="Non_Credit_CAPSLast7Days" type="xs:string"></xs:element>
+                                                               <xs:element name="Non_Credit_CAPSLast90Days" type="xs:string"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="SCORE">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="BureauScore" type="xs:string"></xs:element>
+                                             <xs:element name="BureauScoreConfidLevel" type="xs:string"></xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                     </xs:sequence>
+               </xs:complexType>
+         </xs:element>
+   </xs:schema>

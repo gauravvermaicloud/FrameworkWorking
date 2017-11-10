@@ -1,0 +1,8 @@
+creating self running war : mvn clean compile test package -Prunnable-war
+
+Before Sonar can be run for first time run these
+mvn org.jacoco:jacoco-maven-plugin:prepare-agent clean install
+
+Moving forward run this -
+mvn org.jacoco:jacoco-maven-plugin:prepare-agent clean install -Pcoverage-per-test
+run sonar : mvn sonar:sonar , assume that sonar is up and running 

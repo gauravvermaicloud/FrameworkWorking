@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 Oct, 2014 2:29:42 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+<class name="com.boilerplate.java.entities.ScheduleCampaignEntity" table="ScheduleCampaign">
+		<id name="id" column="Id">
+			<generator class="identity"/>		
+		</id>
+		<property name="query" column="Query"/>		
+		<property name="smsTemplate" column="SMSTemplate"/>		
+		<property name="scheduleDate" column="ScheduleDate"/>
+		<property name="scheduleTime" column="ScheduleTime" />
+		<property name="batchIntervalTime" column="BatchIntervalTime"/>		
+		<property name="batchSize" column="BatchSize"/>
+		<property name="campaignTitle" column="CampaignTitle" />
+		<property name="urlLink" column="LongUrl"/>
+		<property name="smsSender" column="SmsSender" />
+		<property name="campaignSource" column="CampaignSource"/>
+		<property name="maxRows" column="MaxRows"/>
+	</class>
+</hibernate-mapping>

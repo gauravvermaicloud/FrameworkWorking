@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+  		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  		xmlns:mvc="http://www.springframework.org/schema/mvc"
+  		xmlns:context="http://www.springframework.org/schema/context"
+  		xmlns:aop="http://www.springframework.org/schema/aop"
+  		xmlns:task="http://www.springframework.org/schema/task"
+  xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.0.xsd
+        ">
+	
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<mvc:annotation-driven>
+	   <mvc:message-converters>
+	        <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
+	        <ref bean="acmJacksonConverter"/>
+	        <bean class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter"/>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="*.html" location="/"/>
+	<mvc:default-servlet-handler/>
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<context:component-scan base-package="com.boilerplate" />	
+	
+  <mvc:interceptors>
+    	<bean class="com.boilerplate.framework.web.HttpRequestIdInterceptor" />
+  </mvc:interceptors>		
+  
+  <!-- Enable AOP -->
+  <aop:aspectj-autoproxy proxy-target-class="true"/>
+  <bean id="logAndTraceExceptionAspect" class="com.boilerplate.aspects.LogAndTraceExceptionAspect" init-method="init"/>
+  <bean id="logAndTraceObserversAspect" class="com.boilerplate.aspects.LogAndTraceObserversAspect" />
+  
+  <!-- Enable Swagger -->
+ <bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
+ 
+ <!-- Enable background jobs -->
+ <task:annotation-driven />
+ 
+ <!-- Put in an appropriate pool size for non production enviornment we have set it to 1-->
+ <!-- For details visit -  http://docs.spring.io/autorepo/docs/spring-framework/current/spring-framework-reference/html/scheduling.html-->
+ <task:scheduler id="scheduler" pool-size="2"/>
+ <task:executor id="executor" pool-size="2"/>
+ 
+	 <!-- 
+	 	This is the job for reading queue. This job should be removed from servers where
+	 	background tasks are not expected to be executed.
+	 	
+	 	This will read queue every one second this value of fixed-delay should be set to a value
+	 	as best suited  for production.
+	  -->
+	 
+	  
+	 <task:scheduled-tasks scheduler="scheduler">
+		<task:scheduled ref="queueReaderJob" method="readQueueAndDispatch" fixed-delay="1000"/>
+	 </task:scheduled-tasks>	
+ 
+	 <!-- 
+	 	This is a background job to clean up sessions and must be turned off for Cassandra where
+	 	records have TTL
+	 	The time interval is fixed delay
+	  -->
+	<task:scheduled-tasks scheduler="scheduler">
+		<task:scheduled ref="cleanupSessionJob" method="cleanup" fixed-delay="1200000"/>
+	 </task:scheduled-tasks>
+	<bean id="cleanupSessionJob" class="com.boilerplate.jobs.CleanupSessionJob">
+		<property name="sessionManager" ref="sessionManager"></property>
+	</bean>
+	
+	
+</beans>

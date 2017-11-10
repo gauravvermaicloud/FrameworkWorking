@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+		<!--bean For Session, this will be used by User -->
+		<bean id="sessionManager" class="com.boilerplate.sessions.SessionManager" init-method="initialize">
+			<property name="configurationManager" ref="configurationManager" ></property>
+			<property name="session" ref="session" />
+			<property name="queueReaderJob" ref="queueReaderJob"></property>
+			<property name="userService" ref="userService"></property>
+		</bean>
+		<!-- This is one of the possible implementations for session -->
+		<bean id="session" class="com.boilerplate.database.redis.implementation.RedisSession">
+		<property name="configurationManager" ref="configurationManager"></property>
+		</bean>
+		
+		<!-- Beans for Users, use either MySQLUsers or one of the other implementations of users -->
+		<bean id="userService" class="com.boilerplate.service.implemetations.UserService"  init-method="initilize">
+		    <property name="userRole" ref="userRole" />
+		   
+		     <property name="roleService" ref="roleService"></property>
+		    <property name="userDataAccess" ref="userDataAccess"></property>
+		    <property name="configurationManager" ref="configurationManager" ></property>
+		     <property name="sessionManager" ref="sessionManager" ></property>
+		     <property name="queueReaderJob" ref="queueReaderJob"></property>
+		     <property name="sendRegistrationSMSObserver" ref="sendRegistrationSMSObserver"></property>
+		     <property name="sendRegistrationEmailObserver" ref="sendRegistrationEmailObserver"></property>
+		</bean>
+		<bean id="roleService" class="com.boilerplate.service.implemetations.RoleService" init-method="initialize">
+		<property name="role" ref="role" />
+	</bean>
+		<!-- Bean for the Redis Queue Data Access Layer -->
+		<bean id="redisQueueDataAccessLayer" class="com.boilerplate.database.redis.implementation.RedisQueueDataAccessLayer">
+		</bean>
+		<bean id="userRoleService" class="com.boilerplate.service.implemetations.UserRoleService">
+		<property name="roleService" ref="roleService" />
+		<property name="userService" ref="userService" />
+		<property name="userRole" ref="userRole" />
+	</bean>	
+		<!-- Bean for Redis Queue -->
+		<bean id="redisQueue" class="com.boilerplate.queue.RedisQueue">
+			<property name="redisQueueDataAccessLayer" ref="redisQueueDataAccessLayer"></property>
+		</bean>
+		
+		<!-- Use one of the possible implementations of the User -->
+		<bean id="userDataAccess" class="com.boilerplate.database.redis.implementation.RedisUsers">
+		</bean>
+		
+	 <bean id="queueReaderJob" class="com.boilerplate.jobs.QueueReaderJob">
+	 	<property name="configurationManager" ref="configurationManager"></property>
+	 	<property name="asyncWorkDispatcher" ref="asyncWorkDispatcher"></property>
+		<property name="sessionManager" ref="sessionManager" />
+	 </bean> 
+		
+	<!-- Bean for configuration from database, select between 
+	one possible confirguration stores from MySQL, Cassandra, Mongo etc.-->
+	<bean id="databaseConfiguration" class="com.boilerplate.database.redis.implementation.RedisConfiguration">
+	</bean>
+	<bean id="configurationManager" class="com.boilerplate.configurations.ConfigurationManager"  init-method="initialize">
+		<property name="databaseConfiguration" ref="databaseConfiguration"></property>		
+	</bean>
+	
+	
+	<!-- Bean for content management -->
+	<bean id="content" class="com.boilerplate.database.redis.implementation.RedisContent">
+	</bean>
+	<bean id="contentService" class="com.boilerplate.service.implemetations.ContentService"  init-method="initialize">
+		<property name="content" ref="content"></property>
+		<property name="configurationManager" ref="configurationManager" ></property>		
+	</bean>
+
+	<bean id="methodPermissions" class="com.boilerplate.database.redis.implementation.RedisMethodPermissions">
+	</bean>
+	<bean id="methodPermissionService" class="com.boilerplate.service.implemetations.MethodPermissionsService"  init-method="initialize">	
+		<property name="methodPermissions" ref="methodPermissions"></property>	    
+	</bean>
+		
+	
+				
+	<bean id="sourceObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
+	<bean id="acmObjectMapper" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+	    <property name="targetObject" ref="sourceObjectMapper"/>
+	    <property name="targetMethod" value="disable"/>
+	    <property name="arguments" value="WRITE_DATES_AS_TIMESTAMPS"/>
+	</bean>
+	<bean id="acmJacksonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	    <property name="objectMapper" ref="acmObjectMapper"/>
+	</bean>	
+	
+<!-- Add or remover observers for the jobs here -->
+	<bean id="asyncWorkDispatcher" class="com.boilerplate.asyncWork.AsyncWorkDispatcher">
+		<property name="dispatchMap">
+			<map>
+			 <!-- Each entry should have a subject and observer -->
+				<entry
+					 key ="ALL"
+					 value-ref="allAsyncJobObservers"
+				/> <!-- The value ref is the list of observers for the subject -->
+				
+				<!-- This is for saving the work to the database async -->
+				<entry
+				    key="SaveSessionToDatabase"
+				    value-ref="saveSessionToDatabaseObservers"
+				/>   
+
+				
+				<entry
+				    key="CreateUser"
+				    value-ref="createUserObserver"
+				/> 
+
+				
+				<entry
+				    key="ClientSideLog"
+				    value-ref="clientSideLogObserver"
+				/>	
+			
+			</map>
+			
+			
+		</property>
+	</bean>
+
+
+	
+	<bean id="diagnostic" class="com.boilerplate.database.redis.implementation.RedisDiagnostics" />
+	
+	<bean id="clientSideLog" class="com.boilerplate.asyncWork.ClientSideLog" >
+		<property name="diagnostic" ref="diagnostic"></property>
+	</bean>
+
+	<bean id="clientSideLogObserver" class="com.boilerplate.asyncWork.AsyncWorkDispatcherObserverList">
+		<property name="asyncJobList">
+			<list>
+				<!-- This is the class that will save sessions to the database
+					Also the data we put in will get logged as the log observer is enabled for everything
+				 -->
+				 <ref bean="clientSideLog"></ref>
+			</list>
+		</property>
+	</bean>
+
+
+	
+
+
+
+
+	
+	<bean id="allAsyncJobObservers" class="com.boilerplate.asyncWork.AsyncWorkDispatcherObserverList">
+		<property name="asyncJobList">
+			<list>
+				<!-- Add observers for the subject. -->
+				<!-- This observer logs every action done asynchronously and should be removed/disabled -->
+				<!-- <bean class="com.boilerplate.asyncWork.LogObserver"/> -->
+			</list>
+		</property>
+	</bean>
+
+	<bean id="saveSessionToDatabaseObservers" class="com.boilerplate.asyncWork.AsyncWorkDispatcherObserverList">
+	<property name="asyncJobList">
+		<list>
+			<!-- This is the class that will save sessions to the database
+				Also the data we put in will get logged as the log observer is enabled for everything
+			 -->
+			<bean class="com.boilerplate.asyncWork.SaveSessionToDatabaseObserver">
+				<property name="sessionManager" ref="sessionManager"></property>
+			</bean>
+		</list>
+	</property>
+</bean>
+
+		<bean id="createUserObserver" class="com.boilerplate.asyncWork.AsyncWorkDispatcherObserverList">
+		<property name="asyncJobList">
+			<list>
+				<!-- This is the class that will save sessions to the database
+					Also the data we put in will get logged as the log observer is enabled for everything
+				 -->
+				 <ref bean="sendRegistrationSMSObserver"></ref>
+				 <ref bean="sendRegistrationEmailObserver"></ref>
+			</list>
+		</property>
+	</bean>
+	
+		
+		
+	<bean id="sendRegistrationSMSObserver" class="com.boilerplate.asyncWork.SendRegistrationSMSObserver">
+		<property name="contentService" ref="contentService"></property>
+		<property name="configurationManager" ref="configurationManager"></property>
+	</bean>
+
+
+	<bean id="sendRegistrationEmailObserver" class="com.boilerplate.asyncWork.SendRegistrationEmailObserver">
+		<property name="contentService" ref="contentService"></property>
+		<property name="configurationManager" ref="configurationManager"></property>
+	</bean>	
+
+	
+	
+<bean id="publishLibrary"  class="com.boilerplate.aspects.PublishLibrary">
+		<property name="queueReaderJob" ref="queueReaderJob"></property>
+	</bean>
+	
+
+	
+	<bean id="iPingService" class="com.boilerplate.service.implemetations.PingService" init-method="initilize">
+	    <property name="queueReaderJob" ref="queueReaderJob"></property>
+	    <property name="sesionManager" ref="sessionManager"></property>
+	</bean>
+	
+	<bean id="role" class="com.boilerplate.database.redis.implementation.RedisRole" />			
+
+		
+
+	<bean id="userRole" class="com.boilerplate.database.redis.implementation.RedisUserRoles">
+		<property name="redisUsers" ref="userDataAccess" ></property>
+	</bean>					
+	
+
+
+
+</beans>
